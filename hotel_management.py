@@ -107,3 +107,5 @@ def check_out():
 
 if in_out_status == 'OUT':
     check_out()
+
+print(hotel)
