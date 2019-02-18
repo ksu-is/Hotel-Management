@@ -45,10 +45,6 @@ def ask_room():
             if room_num[0] == '1' or room_num[0] == '2' or room_num[0] == '3':
                 global floor_num
                 floor_num = room_num[0]
-                global taken_rooms
-                taken_rooms = []
-                for room in hotel[floor_num]:
-                    taken_rooms.append(room)
                 asking = False
                 break
             else:
@@ -65,14 +61,13 @@ ask_room()
 def check_in ():
     asking = True
     while asking:
-        if room_num not in taken_rooms:
+        if room_num not in hotel[floor_num]:
             guest_num = int(input('How many guests will be checking in? '))
             guests= []
             for guest in range(guest_num):
                 name =  input('Guest name: ')
                 guests.append(name)
                 hotel[floor_num][room_num] = guests
-            taken_rooms.append(room_num)
             time.sleep(.5)
             print('Thank you, I hope you enjoy your stay! Please let us know if there is anyting we can do to make your stay even more amazing')
             asking = False
@@ -92,11 +87,10 @@ if in_out_status == 'IN':
 def check_out():
     asking = True
     while asking:
-        if room_num in taken_rooms:
+        if room_num in hotel[floor_num]:
             print('I hope you enjoyed your stay with us here at Hotel California')
             time.sleep(.5)
             del hotel[floor_num][room_num]
-            taken_rooms.remove(room_num)
             print('You have officially been checked out. We hope to see you soon!')
             asking = False
         else:
