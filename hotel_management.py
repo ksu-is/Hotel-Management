@@ -12,7 +12,7 @@ hotel = {
     }
 }
 
-# an easy thank you statement and simple taken room function
+# an easy thank you statement
 def Thanks():
     print('Thank you!')
 
